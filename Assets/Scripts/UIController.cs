@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    Rigidbody rb;
     public GameObject Player2;
     public GameObject Speed;
     private int Player_Speed;

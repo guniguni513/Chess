@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletGenerator : MonoBehaviour
 {
@@ -10,18 +11,20 @@ public class BulletGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pos = Camera.main.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //bullet生成場所指定のため
+        pos = Camera.main.transform.position;
+
         if (Input.GetButtonDown("Fire1"))
         {
             GameObject bullet = Instantiate(
                 Bullet,
                 pos,
-                Quaternion.identity                
+                Quaternion.Euler(90,0,0)                
                 );
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -29,9 +32,5 @@ public class BulletGenerator : MonoBehaviour
             bullet.GetComponent<BulletController>().Shoot(dir.normalized*2000);
             
         }
-
-
-
     }
-
 }

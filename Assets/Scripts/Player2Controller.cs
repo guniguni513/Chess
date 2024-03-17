@@ -12,7 +12,6 @@ public class Player2Controller : MonoBehaviour
     public bool AddTorque;
     public bool Velocity;
     public float power = 1;
-    private int speed;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +53,8 @@ public class Player2Controller : MonoBehaviour
             {
                 position.x = Input.GetAxis("Vertical");
                 position.z = Input.GetAxis("Horizontal");
+                position.x *= power;
+                position.z *= power;
                 rb.AddTorque(position.x, 0, -position.z);
             }
 
