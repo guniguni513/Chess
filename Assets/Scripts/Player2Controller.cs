@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Player2Controller : MonoBehaviour
 {
@@ -13,7 +10,9 @@ public class Player2Controller : MonoBehaviour
     public bool Rotate;
     public bool AddForce;
     public bool AddTorque;
+    public bool Velocity;
     public float power = 1;
+    private int speed;
 
     // Start is called before the first frame update
     void Start()
@@ -26,36 +25,42 @@ public class Player2Controller : MonoBehaviour
         position.x = Input.GetAxis("Horizontal");
         position.z = Input.GetAxis("Vertical");
 
-        if(Input.GetKey(KeyCode.Space))
-        {
-            rb.velocity = new Vector3(0,0,0);
-        }
-
         position.x *= power;
         position.z *= power;
 
-        Debug.Log(rb.velocity.magnitude);
-        if(Translate)
+        if (Input.GetKey(KeyCode.Space))
         {
-        transform.Translate(position.x,0,position.z);
+            rb.velocity = new Vector3(0, 0, 0);
         }
 
-        if(Rotate)
+        if (rb.velocity.magnitude <= 216)
         {
-        transform.Rotate(position.x,0,position.z);
-        }
+            if (Translate)
+            {
+                transform.Translate(position.x, 0, position.z);
+            }
 
-        if(AddForce)
-        {
-        rb.AddForce(position.x,0,position.z);
-        }
+            if (Rotate)
+            {
+                transform.Rotate(position.x, 0, position.z);
+            }
 
-        if(AddTorque)
-        {
-        position.x = Input.GetAxis("Vertical");
-        position.z = Input.GetAxis("Horizontal");
-        rb.AddTorque(position.x,0,-position.z);
-        }
+            if (AddForce)
+            {
+                rb.AddForce(position.x, 0, position.z);
+            }
 
+            if (AddTorque)
+            {
+                position.x = Input.GetAxis("Vertical");
+                position.z = Input.GetAxis("Horizontal");
+                rb.AddTorque(position.x, 0, -position.z);
+            }
+
+            if (Velocity)
+            {
+                rb.velocity = new Vector3(position.x, 0, position.z);
+            }
+        }
     }
 }
