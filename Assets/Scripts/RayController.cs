@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class RayController : MonoBehaviour
@@ -18,7 +19,12 @@ public class RayController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, false);
+            Debug.DrawRay(ray.origin, ray.direction * distance, Color.red, duration, true);
         }
+    }
+
+    void OnTriggerEnter(Collider collider)
+    {
+
     }
 }

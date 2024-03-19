@@ -25,4 +25,9 @@ public class UIController : MonoBehaviour
     {
         GUI.Label(new Rect(50,50,100,100),Player_Speed+"km/h");
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+
+    }
 }
