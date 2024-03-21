@@ -13,7 +13,6 @@ public class Player2Controller : MonoBehaviour
     public bool Velocity;
     public float power = 1;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -62,6 +61,7 @@ public class Player2Controller : MonoBehaviour
             {
                 rb.velocity = new Vector3(position.x, 0, position.z);
             }
+
         }
     }
 }

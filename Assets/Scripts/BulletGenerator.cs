@@ -8,9 +8,11 @@ public class BulletGenerator : MonoBehaviour
 {
     public GameObject Bullet;
     Vector3 pos;
+    AudioSource shotSound;
     // Start is called before the first frame update
     void Start()
     {
+        shotSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -30,7 +32,8 @@ public class BulletGenerator : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 dir = ray.direction;
             bullet.GetComponent<BulletController>().Shoot(dir.normalized*2000);
-            
+
+            shotSound.Play();
         }
     }
 }
