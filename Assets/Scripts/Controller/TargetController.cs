@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class TargetController : MonoBehaviour
 {
-    public ParticleSystem particle;
+    public GameObject particle;
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -19,8 +19,11 @@ public class TargetController : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        particle.Play();
-        Debug.Log("Destroyed");
+        Instantiate(
+            particle,
+            this.transform.position,
+            Quaternion.identity
+        );
         Destroy(gameObject);
     }
 }

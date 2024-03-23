@@ -20,12 +20,14 @@ public class TargetGenerator : MonoBehaviour
 
     void CreateTarget()
     {
+        Transform parent = this.transform;
         float x = Random.Range(0.0f, 21.0f);
         float y = Random.Range(0.0f, 3.0f);
         Instantiate(
         target,
         new Vector3(x - 10, y, 10),
-        Quaternion.identity
+        Quaternion.identity,
+        parent
         );
     }
 

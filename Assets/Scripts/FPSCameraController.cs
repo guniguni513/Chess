@@ -18,7 +18,7 @@ public class FPSCamera : MonoBehaviour
         pos.z = Input.GetAxis("Vertical");
         transform.Translate(pos.x, 0, pos.z);
         pos = Input.mousePosition;
-        Debug.Log(pos.GetType()); 
+        //Debug.Log(pos.GetType()); 
 
     }
 }
