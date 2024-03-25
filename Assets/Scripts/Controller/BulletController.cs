@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    float destroyTime;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,12 +19,18 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        destroyTime += Time.deltaTime;
+        Debug.Log(destroyTime);
+        if(destroyTime >= 3)
+        {
+            destroyTime = 0;
+            Destroy(gameObject);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("HIT");
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

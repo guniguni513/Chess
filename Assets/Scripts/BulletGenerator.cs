@@ -10,15 +10,21 @@ public class BulletGenerator : MonoBehaviour
     Vector3 pos;
     AudioSource shotSound;
     public GameObject Human;
-    // Start is called before the first frame update
+    public float bulletSpeed;
+
     void Start()
     {
         shotSound = GetComponent<AudioSource>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
+    {
+        CreateBullet();
+    }
+
+    void CreateBullet()
     {
         //bullet生成場所指定のため
         pos = Camera.main.transform.position;
@@ -30,15 +36,15 @@ public class BulletGenerator : MonoBehaviour
             GameObject bullet = Instantiate(
                 Bullet,
                 pos,
-                Quaternion.Euler(90+cameraPos.x,humanPos.y,0),
-                parent
+                Quaternion.Euler(90 + cameraPos.x, humanPos.y, 0)
                 );
 
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Vector3 dir = ray.direction;
-            bullet.GetComponent<BulletController>().Shoot(dir.normalized*10000);
+            bullet.GetComponent<BulletController>().Shoot(dir.normalized * bulletSpeed);
 
             shotSound.Play();
+
         }
     }
 }
