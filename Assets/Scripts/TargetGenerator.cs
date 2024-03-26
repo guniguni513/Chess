@@ -21,7 +21,7 @@ public class TargetGenerator : MonoBehaviour
     void CreateTarget()
     {
         Transform parent = this.transform;
-        float x = Random.Range(0.0f, 21.0f);
+        float x = Random.Range(0.0f, 10.0f);
         float y = Random.Range(0.0f, 3.0f);
         Instantiate(
         target,
@@ -31,7 +31,6 @@ public class TargetGenerator : MonoBehaviour
         );
     }
 
-    // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
@@ -41,6 +40,5 @@ public class TargetGenerator : MonoBehaviour
             timer = 0;
             CreateTarget();
         }
-
     }
 }

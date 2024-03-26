@@ -16,7 +16,7 @@ public class ScoreController : MonoBehaviour
     void Update()
     {
         Debug.Log("Hello");
-        tmPro.text = "Hello"; 
+        tmPro.text = "Rigidbody"; 
     }
 
     void OnGUI()

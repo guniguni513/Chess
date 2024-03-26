@@ -26,4 +26,9 @@ public class TargetController : MonoBehaviour
         );
         Destroy(gameObject);
     }
+
+    void OnCollisionStay(Collision other)
+    {
+        Debug.Log("Stay");
+    }
 }
